@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.quakereport;
+package com.example.android.quakereport.ui;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -23,6 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.android.quakereport.data.Earthquake;
+import com.example.android.quakereport.R;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
