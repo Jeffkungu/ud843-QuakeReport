@@ -114,7 +114,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         progressBar.setVisibility(View.GONE);
     }
 
-    public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
+    private static class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
 
         private String Url;
 
