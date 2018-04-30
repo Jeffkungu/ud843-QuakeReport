@@ -32,7 +32,7 @@ import com.example.android.quakereport.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Earthquake>>{
+public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Earthquake>>, EarthquakeContract.View{
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     private static final String USGS_REQUEST_URL =
@@ -88,17 +88,26 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
-        mAdapter.clear();
-        progressBar.setVisibility(View.GONE);
+        clearAdapter();
 
         if (earthquakes!=null && !earthquakes.isEmpty()) {
-            mAdapter.addAll(earthquakes);
+            displayEarthquake(earthquakes);
         }
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Earthquake>> loader) {
-        mAdapter.clear();
+    public void onLoaderReset(Loader<List<Earthquake>> loader)  {
+        clearAdapter();
     }
 
+    @Override
+    public void displayEarthquake(List<Earthquake> earthquakes) {
+        mAdapter.addAll(earthquakes);
+    }
+
+    @Override
+    public void clearAdapter() {
+        mAdapter.clear();
+        progressBar.setVisibility(View.GONE);
+    }
 }
